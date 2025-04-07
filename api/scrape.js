@@ -1,8 +1,7 @@
 import puppeteer from 'puppeteer-core';
 import chromium from '@sparticuz/chromium';
 
-
-module.exports = async (req, res) => {
+export default async (req, res) => {
   let browser = null;
 
   try {
@@ -35,7 +34,7 @@ module.exports = async (req, res) => {
 
     res.status(200).json(videos);
   } catch (err) {
-    console.error('Scrape error:', err);  // ここでエラー内容をログに出力
+    console.error('Scrape error:', err);
     res.status(500).json({ error: 'Internal Server Error', message: err.message });
   } finally {
     if (browser) await browser.close();
