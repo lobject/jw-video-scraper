@@ -34,8 +34,8 @@ module.exports = async (req, res) => {
 
     res.status(200).json(videos);
   } catch (err) {
-    console.error('Scrape error:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Scrape error:', err);  // ここでエラー内容をログに出力
+    res.status(500).json({ error: 'Internal Server Error', message: err.message });
   } finally {
     if (browser) await browser.close();
   }
